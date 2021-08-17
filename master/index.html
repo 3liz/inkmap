@@ -130,9 +130,8 @@ btn.addEventListener(&#39;click&#39;, async () =&gt; {
     }
   });
 });
-</code></pre></div></div></div><div class="mt-5" id="example-05"><h2>Printing to PDF</h2><p><strong>inkmap</strong> jobs give back a <a href="https://developer.mozilla.org/en-US/docs/Web/API/Blob">Blob</a> which can be inserted into a PDF. This is for example supported by <a href="http://raw.githack.com/MrRio/jsPDF/master/docs/module-addImage.html#~addImage">jsPDF</a>, as showcased here.</p><ul class="nav nav-tabs"><li class="nav-item"><a class="nav-link active" data-toggle="tab" href=".example-05-result">Result</a></li><li class="nav-item"><a class="nav-link" data-toggle="tab" href=".example-05-source">Source</a></li></ul><div class="tab-content mt-2"><div class="tab-pane example-05-result show active"><div class="row align-items-start"><print-spec class="col-8" expanded="false"></print-spec><custom-button class="col-3">Generate!</custom-button></div></div><div class="tab-pane example-05-source"><pre class="rounded small"><code class="js">import { print } from &#39;inkmap&#39;;
+</code></pre></div></div></div><div class="mt-5" id="example-05"><h2>Printing to PDF</h2><p><strong>inkmap</strong> jobs give back a <a href="https://developer.mozilla.org/en-US/docs/Web/API/Blob">Blob</a> which can be inserted into a PDF. This is for example supported by <a href="http://raw.githack.com/MrRio/jsPDF/master/docs/module-addImage.html#~addImage">jsPDF</a>, as showcased here.</p><ul class="nav nav-tabs"><li class="nav-item"><a class="nav-link active" data-toggle="tab" href=".example-05-result">Result</a></li><li class="nav-item"><a class="nav-link" data-toggle="tab" href=".example-05-source">Source</a></li></ul><div class="tab-content mt-2"><div class="tab-pane example-05-result show active"><div class="row align-items-start"><print-spec class="col-8" expanded="false"></print-spec><custom-button class="col-3">Generate!</custom-button></div></div><div class="tab-pane example-05-source"><pre class="rounded small"><code class="js">import { print, getAttributionsText } from &#39;inkmap&#39;;
 import { jsPDF } from &#39;jspdf&#39;;
-import { computeAttributionsText } from &#39;../../src/printer/attributions&#39;;
 
 const root = document.getElementById(&#39;example-05&#39;);
 const btn = /** @type {CustomButton} */ root.querySelector(&#39;custom-button&#39;);
@@ -191,7 +190,7 @@ btn.addEventListener(&#39;click&#39;, async () =&gt; {
   // add attribution
   doc.setFont(&#39;courier&#39;, &#39;normal&#39;);
   doc.setFontSize(12);
-  doc.text(computeAttributionsText(spec.value), 287, 200, null, null, &#39;right&#39;);
+  doc.text(getAttributionsText(spec.value), 287, 200, null, null, &#39;right&#39;);
 
   // download the result
   doc.save(&#39;inkmap.pdf&#39;);
